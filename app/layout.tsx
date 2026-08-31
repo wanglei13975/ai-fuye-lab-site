@@ -6,11 +6,11 @@ const noto = Noto_Sans_SC({ variable: "--font-noto", subsets: ["latin"], weight:
 
 export const metadata: Metadata = {
   title: { default: "AI副业实验室", template: "%s｜AI副业实验室" },
-  description: "AI 项目落地指南、7 天行动计划与交付模板。提供方法与风险提示，不承诺收入结果。",
+  description: "AI 项目落地指南、7 天行动计划与交付模板。美国区 Pro $29.99/年或 $39.99 买断；不承诺收入结果。",
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "AI副业实验室",
-    description: "把想法变成可执行的 7 天路线",
+    description: "免费开始，把想法变成可执行的 7 天路线；美国区 Pro $29.99/年或 $39.99 买断",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "AI副业实验室" }],
     locale: "zh_CN",
     type: "website",

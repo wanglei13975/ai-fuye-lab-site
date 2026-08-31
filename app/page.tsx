@@ -30,7 +30,7 @@ export default function Home() {
       </section>
       <section className="offer wrap" aria-label="App 购买说明">
         <div><p className="eyebrow">AI副业实验室 App</p><h2>先免费开始，按需要解锁 Pro。</h2></div>
-        <div className="offerBody"><p>下载安装免费。Pro 提供完整项目内容与路线；一次性买断和年度订阅均在 App 内提供，具体价格以 App Store 页面显示为准。</p><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">免费下载安装 <span>↗</span></a></div>
+        <div className="offerBody"><p>下载安装免费。美国区 Pro 提供完整项目内容与路线：$29.99/年订阅，或 $39.99 一次性买断；最终价格以 App Store 页面显示为准。</p><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">免费下载安装 <span>↗</span></a></div>
       </section>
       <section className="projectSection wrap" id="projects">
         <div className="sectionHead"><div><p className="eyebrow">首批内容</p><h2>不是灵感清单，是落地路线</h2></div><p>每个项目都包含适用人群、准备成本、执行步骤、风险、停止条件和来源说明。</p></div>

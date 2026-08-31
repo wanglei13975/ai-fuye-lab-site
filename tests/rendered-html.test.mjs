@@ -31,7 +31,9 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(html, /apps\.apple\.com\/us\/app\/ai/);
   assert.match(html, /id6803422848/);
   assert.match(html, /下载安装免费/);
-  assert.match(html, /一次性买断和年度订阅/);
+  assert.match(html, /美国区 Pro 提供完整项目内容与路线/);
+  assert.match(html, /\$29\.99\/年/);
+  assert.match(html, /\$39\.99/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
@@ -41,6 +43,7 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
 
   assert.match(page, /const appStoreUrl = "https:\/\/apps\.apple\.com\/us\/app\//);
   assert.match(page, /前往 App Store/);
-  assert.match(page, /具体价格以 App Store 页面显示为准/);
+  assert.match(page, /\$29\.99\/年订阅/);
+  assert.match(page, /\$39\.99 一次性买断/);
   assert.match(layout, /AI副业实验室/);
 });
