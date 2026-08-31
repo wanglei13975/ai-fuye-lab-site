@@ -4,19 +4,21 @@ const projects = [
   ["AI 视频翻译与配音", "覆盖样片、授权核对、报价与最终交付。"],
 ];
 
+const appStoreUrl = "https://apps.apple.com/us/app/ai%E5%89%AF%E4%B8%9A%E5%AE%9E%E9%AA%8C%E5%AE%A4/id6803422848?ct=site_home_us&mt=8";
+
 export default function Home() {
   return (
     <main>
       <nav className="nav wrap">
         <a className="brand" href="#top" aria-label="AI副业实验室首页"><span className="mark">AI</span> AI副业实验室</a>
-        <div className="navLinks"><a href="#projects">项目指南</a><a href="/privacy">隐私政策</a><a href="/support">支持</a></div>
+        <div className="navLinks"><a href="#projects">项目指南</a><a href={appStoreUrl} target="_blank" rel="noreferrer">下载 App</a><a href="/privacy">隐私政策</a><a href="/support">支持</a></div>
       </nav>
       <section className="hero wrap" id="top">
         <div>
           <p className="eyebrow">从点子到第一次真实验证</p>
           <h1>把 AI 副业想法，<br />变成今天能执行的步骤。</h1>
           <p className="lead">三套经过整理的项目指南、7 天行动计划与实用交付模板。我们提供方法和风险提示，不承诺任何收入结果。</p>
-          <a className="cta" href="#projects">查看首批项目 <span>→</span></a>
+          <div className="heroActions"><a className="cta" href={appStoreUrl} target="_blank" rel="noreferrer">前往 App Store <span>↗</span></a><a className="textLink" href="#projects">先看项目指南 <span>→</span></a></div>
         </div>
         <aside className="routeCard" aria-label="七天行动计划示例">
           <div className="cardTop"><span>7 天行动计划</span><b>第 1 天</b></div>
@@ -25,6 +27,10 @@ export default function Home() {
           <div className="progress"><i /></div>
           <ul><li><span>✓</span>确定目标客户</li><li><span>✓</span>整理访谈问题</li><li><span>○</span>记录反馈与停止条件</li></ul>
         </aside>
+      </section>
+      <section className="offer wrap" aria-label="App 购买说明">
+        <div><p className="eyebrow">AI副业实验室 App</p><h2>先免费开始，按需要解锁 Pro。</h2></div>
+        <div className="offerBody"><p>下载安装免费。Pro 提供完整项目内容与路线；一次性买断和年度订阅均在 App 内提供，具体价格以 App Store 页面显示为准。</p><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">免费下载安装 <span>↗</span></a></div>
       </section>
       <section className="projectSection wrap" id="projects">
         <div className="sectionHead"><div><p className="eyebrow">首批内容</p><h2>不是灵感清单，是落地路线</h2></div><p>每个项目都包含适用人群、准备成本、执行步骤、风险、停止条件和来源说明。</p></div>
