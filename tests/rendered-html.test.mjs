@@ -27,13 +27,13 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>AI副业实验室/);
+  assert.match(html, /<title>AI Side Hustle Lab/);
   assert.match(html, /apps\.apple\.com\/us\/app\/ai/);
   assert.match(html, /id6803422848/);
-  assert.match(html, /下载安装免费/);
-  assert.match(html, /美国区 Pro 提供完整项目内容与路线/);
-  assert.match(html, /\$29\.99\/年/);
-  assert.match(html, /\$39\.99/);
+  assert.match(html, /Download and start for free/);
+  assert.match(html, /US Pro includes the complete project content and action routes/);
+  assert.match(html, /\$29\.99\/year/);
+  assert.match(html, /\$39\.99 lifetime/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
@@ -42,8 +42,8 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
 
   assert.match(page, /const appStoreUrl = "https:\/\/apps\.apple\.com\/us\/app\//);
-  assert.match(page, /前往 App Store/);
-  assert.match(page, /\$29\.99\/年订阅/);
-  assert.match(page, /\$39\.99 一次性买断/);
-  assert.match(layout, /AI副业实验室/);
+  assert.match(page, /View on the App Store/);
+  assert.match(page, /\$29\.99\/year/);
+  assert.match(page, /\$39\.99 lifetime/);
+  assert.match(layout, /AI Side Hustle Lab/);
 });
