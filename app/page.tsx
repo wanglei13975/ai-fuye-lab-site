@@ -4,7 +4,7 @@ const projects = [
   ["AI video translation and dubbing", "Cover a sample, rights checks, pricing, and final delivery."],
 ];
 
-const appStoreUrl = "https://apps.apple.com/us/app/ai%E5%89%AF%E4%B8%9A%E5%AE%9E%E9%AA%8C%E5%AE%A4/id6803422848?ct=site_home_us&mt=8";
+const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=site_home_us&mt=8";
 
 export default function Home() {
   return (
