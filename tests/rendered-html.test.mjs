@@ -43,6 +43,16 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
+test("keeps the support page aligned with the live app version", async () => {
+  const support = await readFile(new URL("../app/support/page.tsx", import.meta.url), "utf8");
+  const githubPages = await readFile(new URL("../docs/support/index.html", import.meta.url), "utf8");
+
+  assert.match(support, /For AI Side Hustle Lab 1\.3/);
+  assert.match(githubPages, /For AI Side Hustle Lab 1\.3/);
+  assert.doesNotMatch(support, /For AI Side Hustle Lab 1\.2/);
+  assert.doesNotMatch(githubPages, /For AI Side Hustle Lab 1\.2/);
+});
+
 test("keeps the App Store CTA and pricing explanation in the source", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
