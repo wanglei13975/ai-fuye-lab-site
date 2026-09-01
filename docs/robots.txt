@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wanglei13975.github.io/ai-fuye-lab-site/sitemap.xml
