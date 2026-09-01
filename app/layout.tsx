@@ -8,6 +8,7 @@ const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id68034228
 export const metadata: Metadata = {
   title: { default: "AI Side Hustle Lab", template: "%s | AI Side Hustle Lab" },
   description: "AI project guides, seven-day action plans, and delivery templates. US Lifetime Pro is $5.99 through September 25, then $39.99; annual Pro is $29.99/year; no income promises.",
+  other: { "apple-itunes-app": "app-id=6803422848" },
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "AI Side Hustle Lab",

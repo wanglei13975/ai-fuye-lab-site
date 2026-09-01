@@ -34,6 +34,7 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(html, /US Pro includes the complete project content and action routes/);
   assert.match(html, /\$29\.99\/year/);
   assert.match(html, /Lifetime Pro for \$5\.99 through September 25, 2026, then \$39\.99/);
+  assert.match(html, /apple-itunes-app/);
   assert.match(html, /class="mobilePurchaseBar"/);
   assert.match(html, /site_mobile_cta/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
