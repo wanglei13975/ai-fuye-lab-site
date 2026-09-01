@@ -4,6 +4,8 @@ Turn one vague AI side-hustle idea into a seven-day experiment you can actually 
 
 [Download AI Side Hustle Lab on the US App Store](https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=github_readme&mt=8) · [Open the product site](https://wanglei13975.github.io/ai-fuye-lab-site/) · [Read the 7-day validation guide](https://gist.github.com/wanglei13975/346360e27033fb72dbf4739bfd9679bf)
 
+> US Lifetime Pro is $5.99 through September 25, 2026, then returns to $39.99. Start free; Apple shows the final price and billing details.
+
 AI Side Hustle Lab is an English-language iPhone app for people who want to test practical AI service ideas without confusing a plan with a promise of income. It helps you compare an idea against your available time, budget, skills, and camera preference, then turns the chosen idea into small daily actions.
 
 ## What is inside
