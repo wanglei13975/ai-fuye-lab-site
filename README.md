@@ -1,4 +1,26 @@
-# vinext-starter
+# AI Side Hustle Lab
+
+Turn one vague AI side-hustle idea into a seven-day experiment you can actually evaluate.
+
+[Download AI Side Hustle Lab on the US App Store](https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=github_readme&mt=8) · [Open the product site](https://wanglei13975.github.io/ai-fuye-lab-site/)
+
+AI Side Hustle Lab is an English-language iPhone app for people who want to test practical AI service ideas without confusing a plan with a promise of income. It helps you compare an idea against your available time, budget, skills, and camera preference, then turns the chosen idea into small daily actions.
+
+## What is inside
+
+- Guided experiments for AI product scene images, short-form video ads, and video translation/dubbing
+- Startup cost and weekly time ranges, fit checks, rights reminders, and explicit stop conditions
+- A seven-day action plan with one to three finishable tasks per day
+- Copyable quote, outreach, delivery-checklist, and stop-condition templates in Pro
+- Local-first progress: no account is required, and Apple handles purchases
+
+Annual Pro is $29.99/year with automatic renewal; Lifetime Pro is a $39.99 one-time purchase. The App Store is the source of truth for the price and billing details. This app is not a job board, agency, investment product, or income guarantee.
+
+Read the [privacy policy](https://wanglei13975.github.io/ai-fuye-lab-site/privacy/) or [support guide](https://wanglei13975.github.io/ai-fuye-lab-site/support/) before downloading.
+
+## Development
+
+This repository also contains the public product site, built with vinext and deployable to GitHub Pages.
 
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
