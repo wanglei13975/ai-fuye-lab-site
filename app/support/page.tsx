@@ -7,7 +7,7 @@ export default function SupportPage() {
   return <main>
     <nav className="nav wrap"><Link className="brand" href="/"><span className="mark">AI</span> AI Side Hustle Lab</Link><div className="navLinks"><Link href="/">Home</Link><Link href="/privacy">Privacy</Link></div></nav>
     <article className="legal wrap">
-      <p className="eyebrow">Support</p><h1>Support & help</h1><p className="updated">For AI Side Hustle Lab 1.1</p>
+      <p className="eyebrow">Support</p><h1>Support & help</h1><p className="updated">For AI Side Hustle Lab 1.2</p>
       <p>Start with the steps below. The app does not provide income guarantees, client matching, or managed services. Support covers app features, content access, purchase restoration, and local data.</p>
       <h2>Pro is still locked after purchase</h2><ol><li>Confirm that the device is signed in to the Apple Account used for the purchase.</li><li>Open the app’s “Me” tab and choose “Restore purchases”.</li><li>Keep the network available while Apple verifies the transaction.</li><li>If Apple shows a charge but access is not restored, use the App Store “Report a Problem” flow to check the transaction.</li></ol>
       <h2>Manage or cancel a subscription</h2><p>On iPhone, open Settings → your Apple Account → Subscriptions, then choose AI Side Hustle Lab. Apple manages billing, refund eligibility, and payment methods.</p>
