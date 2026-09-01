@@ -55,3 +55,12 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
   assert.match(page, /Lifetime Pro for \$5\.99 through September 25, 2026, then \$39\.99/);
   assert.match(layout, /AI Side Hustle Lab/);
 });
+
+test("keeps the GitHub Pages fallback in sync with the conversion offer", async () => {
+  const githubPages = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
+
+  assert.match(githubPages, /github_pages_hero/);
+  assert.match(githubPages, /github_pages_offer/);
+  assert.match(githubPages, /Free to start · Lifetime Pro \$5\.99 through September 25, 2026/);
+  assert.doesNotMatch(githubPages, /github_pages_home/);
+});
