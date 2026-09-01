@@ -33,7 +33,7 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(html, /Download and start for free/);
   assert.match(html, /US Pro includes the complete project content and action routes/);
   assert.match(html, /\$29\.99\/year/);
-  assert.match(html, /\$39\.99 lifetime/);
+  assert.match(html, /Lifetime Pro for \$5\.99 through September 25, 2026, then \$39\.99/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
@@ -44,6 +44,6 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
   assert.match(page, /const appStoreUrl = "https:\/\/apps\.apple\.com\/us\/app\//);
   assert.match(page, /View on the App Store/);
   assert.match(page, /\$29\.99\/year/);
-  assert.match(page, /\$39\.99 lifetime/);
+  assert.match(page, /Lifetime Pro for \$5\.99 through September 25, 2026, then \$39\.99/);
   assert.match(layout, /AI Side Hustle Lab/);
 });
