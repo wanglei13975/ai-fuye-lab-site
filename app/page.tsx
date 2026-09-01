@@ -30,7 +30,7 @@ export default function Home() {
       </section>
       <section className="offer wrap" aria-label="App purchase information">
         <div><p className="eyebrow">AI Side Hustle Lab app</p><h2>Start free. Unlock Pro when you need it.</h2></div>
-        <div className="offerBody"><p>Download and start for free. US Pro includes the complete project content and action routes: $29.99/year, or Lifetime Pro for $5.99 through September 25, 2026, then $39.99. Final pricing is shown by the App Store.</p><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">Download free <span>↗</span></a></div>
+        <div className="offerBody"><p>Download and start for free. Create a 7-day plan, then open Execute Toolkit to unlock copyable client templates. US Pro includes the complete project content and action routes: $29.99/year, or Lifetime Pro for $5.99 through September 25, 2026, then $39.99. Final pricing is shown by the App Store.</p><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">Download free <span>↗</span></a></div>
       </section>
       <section className="projectSection wrap" id="projects">
         <div className="sectionHead"><div><p className="eyebrow">The first three guides</p><h2>Not an inspiration list. A route to execution.</h2></div><p>Each project includes fit, starting cost, action steps, risks, stop conditions, and source notes.</p></div>
