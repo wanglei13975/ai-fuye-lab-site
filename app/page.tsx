@@ -33,7 +33,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <nav className="nav wrap">
         <a className="brand" href="#top" aria-label="AI Side Hustle Lab home"><span className="mark">AI</span> AI Side Hustle Lab</a>
-        <div className="navLinks"><a href="#projects">Guides</a><a href="/validate">7-day route</a><a href={appStoreUrls.nav} target="_blank" rel="noreferrer">Get the app</a><a href="/privacy">Privacy</a><a href="/support">Support</a></div>
+        <div className="navLinks"><a href="#projects">Guides</a><a href="/ai-side-hustle-ideas">Ideas</a><a href="/validate">7-day route</a><a href={appStoreUrls.nav} target="_blank" rel="noreferrer">Get the app</a><a href="/privacy">Privacy</a><a href="/support">Support</a></div>
       </nav>
       <section className="hero wrap" id="top">
         <div>

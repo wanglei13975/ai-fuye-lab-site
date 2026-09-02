@@ -85,9 +85,21 @@ test("renders the seven-day validation route with a direct App Store CTA", async
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
+test("renders the high-intent AI ideas route with a seven-day guide and CTA", async () => {
+  const response = await render("/ai-side-hustle-ideas");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /AI side-hustle ideas you can validate/);
+  assert.match(html, /One customer\.<br\/>One sample\.<br\/>One decision\./);
+  assert.match(html, /How to validate an AI side-hustle idea in seven days/);
+  assert.match(html, /site_ideas_us/);
+  assert.match(html, /Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
+});
+
 test("keeps the GitHub Pages fallback in sync with the conversion offer", async () => {
   const githubPages = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
   const validationPage = await readFile(new URL("../docs/validate-ai-side-hustle/index.html", import.meta.url), "utf8");
+  const ideasPage = await readFile(new URL("../docs/ai-side-hustle-ideas/index.html", import.meta.url), "utf8");
 
   assert.match(githubPages, /github_pages_hero/);
   assert.match(githubPages, /github_pages_offer/);
@@ -99,4 +111,8 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   assert.match(validationPage, /github_validation_us/);
   assert.match(validationPage, /Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
   assert.match(validationPage, /twitter:card/);
+  assert.match(ideasPage, /AI side-hustle ideas you can validate/);
+  assert.match(ideasPage, /site_ideas_us/);
+  assert.match(ideasPage, /application\/ld\+json/);
+  assert.match(ideasPage, /twitter:card/);
 });

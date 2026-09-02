@@ -20,7 +20,7 @@ export default function ValidatePage() {
     <main>
       <nav className="nav wrap">
         <Link className="brand" href="/" aria-label="AI Side Hustle Lab home"><span className="mark">AI</span> AI Side Hustle Lab</Link>
-        <div className="navLinks"><Link href="/">Home</Link><Link href="/support">Support</Link><Link href="/privacy">Privacy</Link></div>
+        <div className="navLinks"><Link href="/">Home</Link><Link href="/ai-side-hustle-ideas">Ideas</Link><Link href="/support">Support</Link><Link href="/privacy">Privacy</Link></div>
       </nav>
       <section className="validationHero wrap">
         <div>
