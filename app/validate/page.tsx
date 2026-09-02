@@ -39,7 +39,7 @@ export default function ValidatePage() {
         <div><p className="eyebrow">What the app helps you finish</p><h2>A plan you can evaluate at the end of the week.</h2></div>
         <div><ul><li>Fit, starting cost, time range, and rights reminders</li><li>Daily actions with explicit stop conditions</li><li>Templates for outreach, quotes, delivery, and review</li></ul><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">Download free <span>↗</span></a></div>
       </section>
-      <section className="validationNote wrap"><p><b>US purchase information:</b> Annual Pro is currently available at $29.99/year. A limited Lifetime Pro offer may be shown by Apple through September 25, 2026; the App Store is the source of truth for product availability, price, and billing details. The app provides methods and risk notes, not an income guarantee.</p></section>
+      <section className="validationNote wrap"><p><b>US purchase information:</b> Annual Pro is $29.99/year and the limited Lifetime Pro offer is $5.99 through September 25, 2026. The App Store is the source of truth for final product availability, price, and billing details. The app provides methods and risk notes, not an income guarantee.</p></section>
       <footer className="wrap"><span>© 2026 AI Side Hustle Lab</span><div><a href="/privacy">Privacy</a><a href="/support">Support</a></div></footer>
     </main>
   );

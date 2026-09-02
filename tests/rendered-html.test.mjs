@@ -31,15 +31,15 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(html, /apps\.apple\.com\/us\/app\/ai/);
   assert.match(html, /id6803422848/);
   assert.match(html, /Download and start for free/);
-  assert.match(html, /Annual Pro is currently available in the US at \$29\.99\/year/);
+  assert.match(html, /In the US, Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
   assert.match(html, /\$29\.99\/year/);
-  assert.match(html, /Free to start · Annual Pro \$29\.99\/year available now/);
+  assert.match(html, /Free to start · Annual Pro \$29\.99\/year · limited Lifetime Pro \$5\.99 through September 25, 2026/);
   assert.match(html, /site_hero_us/);
   assert.match(html, /site_offer_us/);
   assert.match(html, /apple-itunes-app/);
   assert.match(html, /class="mobilePurchaseBar"/);
   assert.match(html, /site_mobile_cta/);
-  assert.match(html, /Annual Pro \$29\.99\/year/);
+  assert.match(html, /Lifetime Pro \$5\.99/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
@@ -63,7 +63,8 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
   assert.match(page, /site_hero_us/);
   assert.match(page, /site_offer_us/);
   assert.match(page, /\$29\.99\/year/);
-  assert.match(page, /Annual Pro is currently available in the US at \$29\.99\/year/);
+  assert.match(page, /In the US, Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
+  assert.match(page, /limited Lifetime Pro \$5\.99 through September 25, 2026/);
   assert.match(validation, /site_validation_us/);
   assert.match(layout, /AI Side Hustle Lab/);
 });
@@ -75,7 +76,7 @@ test("renders the seven-day validation route with a direct App Store CTA", async
   assert.match(html, /Validate one AI service idea/);
   assert.match(html, /One customer\.<br\/>One sample\.<br\/>One decision\./);
   assert.match(html, /site_validation_us/);
-  assert.match(html, /Annual Pro is currently available at \$29\.99\/year/);
+  assert.match(html, /Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
@@ -85,9 +86,9 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
 
   assert.match(githubPages, /github_pages_hero/);
   assert.match(githubPages, /github_pages_offer/);
-  assert.match(githubPages, /Free to start · Annual Pro \$29\.99\/year available now/);
+  assert.match(githubPages, /Free to start · Annual Pro \$29\.99\/year · limited Lifetime Pro \$5\.99 through September 25, 2026/);
   assert.doesNotMatch(githubPages, /github_pages_home/);
   assert.match(validationPage, /Validate one AI service idea/);
   assert.match(validationPage, /github_validation_us/);
-  assert.match(validationPage, /Annual Pro is currently available at \$29\.99\/year/);
+  assert.match(validationPage, /Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
 });

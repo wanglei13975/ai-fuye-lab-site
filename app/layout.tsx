@@ -7,7 +7,7 @@ const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id68034228
 
 export const metadata: Metadata = {
   title: { default: "AI Side Hustle Lab", template: "%s | AI Side Hustle Lab" },
-  description: "AI project guides, seven-day action plans, and delivery templates. US Annual Pro is $29.99/year and available now; a limited lifetime offer is shown only when Apple makes it available; no income promises.",
+  description: "AI project guides, seven-day action plans, and delivery templates. US Annual Pro is $29.99/year and limited Lifetime Pro is $5.99 through September 25, 2026; no income promises.",
   other: { "apple-itunes-app": "app-id=6803422848" },
   icons: { icon: "/favicon.svg" },
   openGraph: {
@@ -20,5 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={noto.variable}>{children}<div className="mobilePurchaseBar" aria-label="Annual Pro offer"><span><strong>Annual Pro $29.99/year</strong><small>start free · US App Store</small></span><a href={appStoreUrl} target="_blank" rel="noreferrer">Get the app <span aria-hidden="true">↗</span></a></div></body></html>;
+  return <html lang="en"><body className={noto.variable}>{children}<div className="mobilePurchaseBar" aria-label="Limited Lifetime Pro offer"><span><strong>Lifetime Pro $5.99</strong><small>through Sep 25 · US App Store</small></span><a href={appStoreUrl} target="_blank" rel="noreferrer">Get the app <span aria-hidden="true">↗</span></a></div></body></html>;
 }
