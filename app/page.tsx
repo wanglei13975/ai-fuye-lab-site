@@ -11,9 +11,26 @@ const appStoreUrls = {
   offer: `${appStoreBaseUrl}?ct=site_offer_us&mt=8`,
 };
 
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "AI Side Hustle Lab",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "iOS",
+  description: "Seven-day AI service idea validation routes, action plans, and practical delivery templates.",
+  url: "https://wanglei13975.github.io/ai-fuye-lab-site/",
+  downloadUrl: appStoreBaseUrl,
+  offers: [
+    { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free start" },
+    { "@type": "Offer", price: "5.99", priceCurrency: "USD", validThrough: "2026-09-25", description: "Limited Lifetime Pro offer through September 25, 2026" },
+    { "@type": "Offer", price: "29.99", priceCurrency: "USD", description: "Annual Pro subscription" },
+  ],
+};
+
 export default function Home() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <nav className="nav wrap">
         <a className="brand" href="#top" aria-label="AI Side Hustle Lab home"><span className="mark">AI</span> AI Side Hustle Lab</a>
         <div className="navLinks"><a href="#projects">Guides</a><a href="/validate">7-day route</a><a href={appStoreUrls.nav} target="_blank" rel="noreferrer">Get the app</a><a href="/privacy">Privacy</a><a href="/support">Support</a></div>

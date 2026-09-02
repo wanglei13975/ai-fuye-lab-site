@@ -37,6 +37,9 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(html, /site_hero_us/);
   assert.match(html, /site_offer_us/);
   assert.match(html, /apple-itunes-app/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /"applicationCategory":"BusinessApplication"/);
+  assert.match(html, /"price":"5\.99"/);
   assert.match(html, /class="mobilePurchaseBar"/);
   assert.match(html, /site_mobile_cta/);
   assert.match(html, /Lifetime Pro \$5\.99/);
@@ -86,6 +89,8 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
 
   assert.match(githubPages, /github_pages_hero/);
   assert.match(githubPages, /github_pages_offer/);
+  assert.match(githubPages, /application\/ld\+json/);
+  assert.match(githubPages, /"price":"5\.99"/);
   assert.match(githubPages, /Free to start · Annual Pro \$29\.99\/year · limited Lifetime Pro \$5\.99 through September 25, 2026/);
   assert.doesNotMatch(githubPages, /github_pages_home/);
   assert.match(validationPage, /Validate one AI service idea/);
