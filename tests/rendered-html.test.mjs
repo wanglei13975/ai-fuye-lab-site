@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }),
     {
       ASSETS: {
         fetch: async () => new Response("Not found", { status: 404 }),
@@ -31,15 +31,15 @@ test("renders the public acquisition page with a live App Store route", async ()
   assert.match(html, /apps\.apple\.com\/us\/app\/ai/);
   assert.match(html, /id6803422848/);
   assert.match(html, /Download and start for free/);
-  assert.match(html, /US Pro includes the complete project content and action routes/);
+  assert.match(html, /Annual Pro is currently available in the US at \$29\.99\/year/);
   assert.match(html, /\$29\.99\/year/);
-  assert.match(html, /Lifetime Pro for \$5\.99 through September 25, 2026, then \$39\.99/);
-  assert.match(html, /Free to start · Lifetime Pro \$5\.99 through September 25, 2026/);
+  assert.match(html, /Free to start · Annual Pro \$29\.99\/year available now/);
   assert.match(html, /site_hero_us/);
   assert.match(html, /site_offer_us/);
   assert.match(html, /apple-itunes-app/);
   assert.match(html, /class="mobilePurchaseBar"/);
   assert.match(html, /site_mobile_cta/);
+  assert.match(html, /Annual Pro \$29\.99\/year/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
@@ -56,21 +56,38 @@ test("keeps the support page aligned with the live app version", async () => {
 test("keeps the App Store CTA and pricing explanation in the source", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  const validation = await readFile(new URL("../app/validate/page.tsx", import.meta.url), "utf8");
 
   assert.match(page, /const appStoreBaseUrl = "https:\/\/apps\.apple\.com\/us\/app\//);
   assert.match(page, /View on the App Store/);
   assert.match(page, /site_hero_us/);
   assert.match(page, /site_offer_us/);
   assert.match(page, /\$29\.99\/year/);
-  assert.match(page, /Lifetime Pro for \$5\.99 through September 25, 2026, then \$39\.99/);
+  assert.match(page, /Annual Pro is currently available in the US at \$29\.99\/year/);
+  assert.match(validation, /site_validation_us/);
   assert.match(layout, /AI Side Hustle Lab/);
+});
+
+test("renders the seven-day validation route with a direct App Store CTA", async () => {
+  const response = await render("/validate");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Validate one AI service idea/);
+  assert.match(html, /One customer\.<br\/>One sample\.<br\/>One decision\./);
+  assert.match(html, /site_validation_us/);
+  assert.match(html, /Annual Pro is currently available at \$29\.99\/year/);
+  assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
 });
 
 test("keeps the GitHub Pages fallback in sync with the conversion offer", async () => {
   const githubPages = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
+  const validationPage = await readFile(new URL("../docs/validate-ai-side-hustle/index.html", import.meta.url), "utf8");
 
   assert.match(githubPages, /github_pages_hero/);
   assert.match(githubPages, /github_pages_offer/);
-  assert.match(githubPages, /Free to start · Lifetime Pro \$5\.99 through September 25, 2026/);
+  assert.match(githubPages, /Free to start · Annual Pro \$29\.99\/year available now/);
   assert.doesNotMatch(githubPages, /github_pages_home/);
+  assert.match(validationPage, /Validate one AI service idea/);
+  assert.match(validationPage, /github_validation_us/);
+  assert.match(validationPage, /Annual Pro is currently available at \$29\.99\/year/);
 });

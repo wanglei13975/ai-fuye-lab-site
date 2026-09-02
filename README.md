@@ -4,7 +4,7 @@ Turn one vague AI side-hustle idea into a seven-day experiment you can actually 
 
 [Download AI Side Hustle Lab on the US App Store](https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=github_readme&mt=8) · [Open the product site](https://wanglei13975.github.io/ai-fuye-lab-site/) · [Read the launch notes](https://github.com/wanglei13975/ai-fuye-lab-site/releases/tag/launch-2026-09) · [Read the 7-day validation guide](https://gist.github.com/wanglei13975/346360e27033fb72dbf4739bfd9679bf)
 
-> US Lifetime Pro is $5.99 through September 25, 2026, then returns to $39.99. Start free; Apple shows the final price and billing details.
+> US Annual Pro is $29.99/year and currently available. A limited Lifetime Pro offer may be shown by Apple through September 25, 2026, then returns to $39.99. Start free; Apple shows the final price and billing details.
 
 AI Side Hustle Lab is an English-language iPhone app for people who want to test practical AI service ideas without confusing a plan with a promise of income. It helps you compare an idea against your available time, budget, skills, and camera preference, then turns the chosen idea into small daily actions.
 
@@ -16,7 +16,7 @@ AI Side Hustle Lab is an English-language iPhone app for people who want to test
 - Copyable quote, outreach, delivery-checklist, and stop-condition templates in Pro
 - Local-first progress: no account is required, and Apple handles purchases
 
-Annual Pro is $29.99/year with automatic renewal. Lifetime Pro is $5.99 through September 25, 2026, then returns to a $39.99 one-time purchase. The App Store is the source of truth for the price and billing details. This app is not a job board, agency, investment product, or income guarantee.
+Annual Pro is $29.99/year with automatic renewal and is currently available in the US. Apple may show a limited Lifetime Pro offer at $5.99 through September 25, 2026, then return it to a $39.99 one-time purchase. The App Store is the source of truth for product availability, price, and billing details. This app is not a job board, agency, investment product, or income guarantee.
 
 Read the [privacy policy](https://wanglei13975.github.io/ai-fuye-lab-site/privacy/) or [support guide](https://wanglei13975.github.io/ai-fuye-lab-site/support/) before downloading.
 
