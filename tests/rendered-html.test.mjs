@@ -70,6 +70,8 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
   assert.match(page, /limited Lifetime Pro \$5\.99 through September 25, 2026/);
   assert.match(validation, /site_validation_us/);
   assert.match(layout, /AI Side Hustle Lab/);
+  assert.match(layout, /summary_large_image/);
+  assert.match(layout, /through September 25, 2026/);
 });
 
 test("renders the seven-day validation route with a direct App Store CTA", async () => {
@@ -96,4 +98,5 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   assert.match(validationPage, /Validate one AI service idea/);
   assert.match(validationPage, /github_validation_us/);
   assert.match(validationPage, /Annual Pro is \$29\.99\/year and the limited Lifetime Pro offer is \$5\.99 through September 25, 2026/);
+  assert.match(validationPage, /twitter:card/);
 });

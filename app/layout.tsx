@@ -12,10 +12,18 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "AI Side Hustle Lab",
-    description: "Start free and turn one idea into a practical seven-day route; US Annual Pro is $29.99/year and available now.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "AI Side Hustle Lab" }],
+    description: "Start free and turn one idea into a practical seven-day route; US Lifetime Pro is $5.99 through September 25, 2026, with Annual Pro at $29.99/year.",
+    url: "https://wanglei13975.github.io/ai-fuye-lab-site/",
+    siteName: "AI Side Hustle Lab",
+    images: [{ url: "https://wanglei13975.github.io/ai-fuye-lab-site/og.png", width: 1200, height: 630, alt: "AI Side Hustle Lab" }],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Side Hustle Lab",
+    description: "Start free; US Lifetime Pro is $5.99 through September 25, 2026, and Annual Pro is $29.99/year.",
+    images: ["https://wanglei13975.github.io/ai-fuye-lab-site/og.png"],
   },
 };
 
