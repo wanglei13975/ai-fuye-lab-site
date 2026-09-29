@@ -54,7 +54,7 @@ export default function IdeasPage() {
         <div><p className="eyebrow">A seven-day decision</p><h2>Use small evidence to decide what not to build.</h2></div>
         <div><ul><li>Day 1–2: name the customer, outcome, and constraints</li><li>Day 3–4: make and review one deliberately small sample</li><li>Day 5–7: ask for evidence, check costs, and record a stop/continue decision</li></ul><a className="cta light" href={appStoreUrl} target="_blank" rel="noreferrer">Download free <span>↗</span></a></div>
       </section>
-      <section className="validationNote wrap"><p><b>US purchase information:</b> AI Side Hustle Lab is free to start. Annual Pro is $29.99/year and the limited Lifetime Pro offer is $5.99 through September 25, 2026. The App Store is the source of truth for final availability and billing details.</p></section>
+      <section className="validationNote wrap"><p><b>US purchase information:</b> AI Side Hustle Lab is free to start. Annual Pro is $29.99/year and Lifetime Pro is a $39.99 one-time purchase. The App Store is the source of truth for final availability and billing details.</p></section>
       <footer className="wrap"><span>© 2026 AI Side Hustle Lab</span><div><Link href="/">Home</Link><Link href="/privacy">Privacy</Link><Link href="/support">Support</Link></div></footer>
     </main>
   );
