@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=site_mobile_cta&mt=8";
+const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?pt=128677255&ct=site_home_ai_q4_2026&mt=8";
 
 export const metadata: Metadata = {
   title: { default: "AI Side Hustle Lab", template: "%s | AI Side Hustle Lab" },
   description: "AI project guides, seven-day action plans, and delivery templates. US Pro is $29.99/year or $39.99 one-time; no income promises.",
-  other: { "apple-itunes-app": "app-id=6803422848" },
+  other: { "apple-itunes-app": "app-id=6803422848, ct=site_home_ai_q4_2026, pt=128677255, mt=8" },
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "AI Side Hustle Lab",

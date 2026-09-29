@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=site_ideas_us&mt=8";
+const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?pt=128677255&ct=site_home_ai_q4_2026&mt=8";
 
 export const metadata: Metadata = {
   title: "AI Side Hustle Ideas You Can Validate in 7 Days",

@@ -5,10 +5,11 @@ const projects = [
 ];
 
 const appStoreBaseUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848";
+const appStoreCampaignUrl = `${appStoreBaseUrl}?pt=128677255&ct=site_home_ai_q4_2026&mt=8`;
 const appStoreUrls = {
-  nav: `${appStoreBaseUrl}?ct=site_nav_us&mt=8`,
-  hero: `${appStoreBaseUrl}?ct=site_hero_us&mt=8`,
-  offer: `${appStoreBaseUrl}?ct=site_offer_us&mt=8`,
+  nav: appStoreCampaignUrl,
+  hero: appStoreCampaignUrl,
+  offer: appStoreCampaignUrl,
 };
 
 const productStructuredData = {
@@ -19,7 +20,7 @@ const productStructuredData = {
   operatingSystem: "iOS",
   description: "Seven-day AI service idea validation routes, action plans, and practical delivery templates.",
   url: "https://wanglei13975.github.io/ai-fuye-lab-site/",
-  downloadUrl: appStoreBaseUrl,
+  downloadUrl: appStoreCampaignUrl,
   offers: [
     { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free start" },
     { "@type": "Offer", price: "39.99", priceCurrency: "USD", description: "Lifetime Pro one-time purchase" },
