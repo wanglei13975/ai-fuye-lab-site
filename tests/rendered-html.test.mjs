@@ -97,6 +97,21 @@ test("keeps the earlier seven-day validation route working", async () => {
   assert.match(html, /validate-ai-side-hustle/);
 });
 
+test("renders a printable seven-day worksheet with transparent evidence and a tracked app route", async () => {
+  const response = await render("/ai-service-validation-worksheet");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Free AI Service Validation Worksheet: 7-Day Test/);
+  assert.match(html, /Test one AI service idea before you build a business around it/);
+  assert.match(html, /DAY(?: <!-- -->)?01/);
+  assert.match(html, /DAY(?: <!-- -->)?07/);
+  assert.match(html, /verify permission for every image, voice, text, and brand asset/);
+  assert.match(html, /Continue · narrow · stop/);
+  assert.match(html, /Print \/ save as PDF/);
+  assert.match(html, /pt=128677255&amp;ct=site_home_ai_q4_2026&amp;mt=8/);
+  assert.doesNotMatch(html, /<form\b|<input\b|guaranteed income/i);
+});
+
 test("renders the high-intent AI ideas route with a seven-day guide and CTA", async () => {
   const response = await render("/ai-side-hustle-ideas");
   assert.equal(response.status, 200);
@@ -106,12 +121,17 @@ test("renders the high-intent AI ideas route with a seven-day guide and CTA", as
   assert.match(html, /How to validate an AI side-hustle idea in seven days/);
   assert.match(html, /pt=128677255&amp;ct=site_home_ai_q4_2026&amp;mt=8/);
   assert.match(html, /Annual Pro is \$29\.99\/year and Lifetime Pro is a \$39\.99 one-time purchase/);
+  assert.match(html, /Print the free seven-day worksheet/);
 });
 
 test("keeps the GitHub Pages fallback in sync with the conversion offer", async () => {
   const githubPages = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
   const validationPage = await readFile(new URL("../docs/validate-ai-side-hustle/index.html", import.meta.url), "utf8");
   const ideasPage = await readFile(new URL("../docs/ai-side-hustle-ideas/index.html", import.meta.url), "utf8");
+  const worksheetPage = await readFile(new URL("../docs/ai-service-validation-worksheet/index.html", import.meta.url), "utf8");
+  const validationCss = await readFile(new URL("../docs/validation.css", import.meta.url), "utf8");
+  const sitemap = await readFile(new URL("../docs/sitemap.xml", import.meta.url), "utf8");
+  const deploymentWorkflow = await readFile(new URL("../.github/workflows/pages.yml", import.meta.url), "utf8");
 
   assert.match(githubPages, /pt=128677255&amp;ct=site_home_ai_q4_2026&amp;mt=8/);
   assert.match(githubPages, /application\/ld\+json/);
@@ -125,6 +145,21 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   assert.match(ideasPage, /pt=128677255&amp;ct=site_home_ai_q4_2026&amp;mt=8/);
   assert.match(ideasPage, /application\/ld\+json/);
   assert.match(ideasPage, /twitter:card/);
+  assert.match(ideasPage, /ai-service-validation-worksheet\//);
+  assert.match(worksheetPage, /Free AI Service Validation Worksheet: 7-Day Test/);
+  assert.match(worksheetPage, /pt=128677255&amp;ct=site_home_ai_q4_2026&amp;mt=8/);
+  assert.match(worksheetPage, /defer src="\/ai-fuye-lab-site\/campaign-link\.js"/);
+  assert.match(worksheetPage, /Print \/ save as PDF/);
+  assert.match(validationCss, /@media print/);
+  assert.match(sitemap, /ai-service-validation-worksheet\//);
+  assert.match(deploymentWorkflow, /workflow_dispatch/);
+  assert.match(deploymentWorkflow, /pages: write/);
+  assert.match(deploymentWorkflow, /id-token: write/);
+  assert.match(deploymentWorkflow, /actions\/checkout@v7/);
+  assert.match(deploymentWorkflow, /actions\/configure-pages@v6/);
+  assert.match(deploymentWorkflow, /upload-pages-artifact@v5/);
+  assert.match(deploymentWorkflow, /deploy-pages@v5/);
+  assert.match(deploymentWorkflow, /path: \.\/docs/);
   assert.doesNotMatch(`${githubPages}\n${validationPage}\n${ideasPage}`, /\$5\.99|September 25, 2026|Sep 25/);
   assert.match(githubPages, /validate-ai-side-hustle\//);
   assert.match(ideasPage, /validate-ai-side-hustle\//);
@@ -185,6 +220,7 @@ test("loads campaign attribution forwarding on every public GitHub Pages route",
     "../docs/index.html",
     "../docs/ai-side-hustle-ideas/index.html",
     "../docs/validate-ai-side-hustle/index.html",
+    "../docs/ai-service-validation-worksheet/index.html",
     "../docs/privacy/index.html",
     "../docs/support/index.html",
   ]) {

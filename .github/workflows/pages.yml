@@ -1,0 +1,30 @@
+name: Deploy static GitHub Pages site
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Check out site source
+        uses: actions/checkout@v7
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload static docs
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./docs
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v5
