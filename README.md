@@ -1,124 +1,31 @@
 # AI Side Hustle Lab
 
-Turn one vague AI side-hustle idea into a seven-day experiment you can actually evaluate.
+Turn one AI service idea into a small seven-day test. Check the time, costs, and rights involved, make a first sample, then decide whether to continue, adjust, or stop.
 
-[Download AI Side Hustle Lab on the US App Store](https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?pt=128677255&ct=github_owned_ai_q42026&mt=8) · [Open the product site](https://wanglei13975.github.io/ai-fuye-lab-site/) · [Read the launch notes](https://github.com/wanglei13975/ai-fuye-lab-site/releases/tag/launch-2026-09) · [Read the 7-day validation guide](https://gist.github.com/wanglei13975/346360e27033fb72dbf4739bfd9679bf)
+[**Download free on the US App Store**](https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?pt=128677255&ct=github_owned_ai_q42026&mt=8) · [Try the free validation worksheet](https://wanglei13975.github.io/ai-fuye-lab-site/ai-service-validation-worksheet/) · [Product website](https://wanglei13975.github.io/ai-fuye-lab-site/)
 
-> Start free. In the US, Annual Pro is $29.99/year and Lifetime Pro is a $39.99 one-time purchase. Apple shows the final price and billing details.
+<p align="center">
+  <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ec/54/11/ec5411a3-0d8d-c246-c58c-716c166707e4/en-01-home.png/320x480bb.jpg" width="190" alt="Choose an AI project that fits your time, budget, and skills" />
+  <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/58/a9/5a/58a95ad8-4274-7171-40ad-5efd22fc845b/en-02-projects.png/320x480bb.jpg" width="190" alt="Compare project recommendations against your time, budget, and skills" />
+  <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/8d/1e/76/8d1e76ea-344b-9967-a9e8-681ba1d58815/en-03-plan.png/320x480bb.jpg" width="190" alt="Follow a seven-day plan and track today's tasks" />
+</p>
 
-AI Side Hustle Lab is an English-language iPhone app for people who want to test practical AI service ideas without confusing a plan with a promise of income. It helps you compare an idea against your available time, budget, skills, and camera preference, then turns the chosen idea into small daily actions.
+## Test the work before betting on the idea
 
-## What is inside
+AI Side Hustle Lab is for people exploring practical AI services who want a clear first experiment instead of another list of “side hustle” ideas. It helps you compare a project with your available time, budget, and skills, then break the work into daily steps and a sample you can evaluate.
 
-- Guided experiments for AI product scene images, short-form video ads, and video translation/dubbing
-- Startup cost and weekly time ranges, fit checks, rights reminders, and explicit stop conditions
-- A seven-day action plan with one to three finishable tasks per day
-- Copyable quote, outreach, delivery-checklist, and stop-condition templates in Pro
-- Local-first progress: no account is required, and Apple handles purchases
+Current guides cover AI product-scene images, short-form video ads, and video translation or dubbing. Each guide includes effort and cost ranges, rights reminders, and reasons to pause. Tool prices can change, so check them before spending.
 
-Annual Pro is $29.99/year with automatic renewal and is available in the US. Lifetime Pro is a $39.99 one-time purchase. The App Store is the source of truth for product availability, price, and billing details. This app is not a job board, agency, investment product, or income guarantee.
+## What is free, and what does Pro add?
 
-Read the [privacy policy](https://wanglei13975.github.io/ai-fuye-lab-site/privacy/) or [support guide](https://wanglei13975.github.io/ai-fuye-lab-site/support/) before downloading.
+The free app lets you match with a project, save one plan, and keep or export your data. Pro adds the complete execution routes, reusable pricing, outreach and delivery templates, stop conditions, and multiple plans.
 
-## Development
+In the US App Store, Annual Pro is **$29.99 per year** and Lifetime Pro is a **$39.99 one-time purchase**. The App Store shows the final price and billing details before purchase. No account is required; Apple handles purchases.
 
-This repository also contains the public product site, built with vinext and deployable to GitHub Pages.
+This is a planning tool, not a job board or investment product. It does not promise clients, orders, or income.
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+## More information
 
-## Prerequisites
-
-- Node.js `>=22.13.0`
-
-## Quick Start
-
-```bash
-npm install
-npm run dev
-npm run build
-```
-
-This starter does not use `wrangler.jsonc`.
-
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
-```
-
-## Optional Dispatch-Owned ChatGPT Sign-In
-
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+- [Privacy policy](https://wanglei13975.github.io/ai-fuye-lab-site/privacy/)
+- [Support](https://wanglei13975.github.io/ai-fuye-lab-site/support/)
+- [Seven-day validation worksheet](https://wanglei13975.github.io/ai-fuye-lab-site/ai-service-validation-worksheet/)
