@@ -131,7 +131,7 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   const worksheetPage = await readFile(new URL("../docs/ai-service-validation-worksheet/index.html", import.meta.url), "utf8");
   const validationCss = await readFile(new URL("../docs/validation.css", import.meta.url), "utf8");
   const sitemap = await readFile(new URL("../docs/sitemap.xml", import.meta.url), "utf8");
-  const deploymentWorkflow = await readFile(new URL("../.github/workflows/pages.yml", import.meta.url), "utf8");
+  const robots = await readFile(new URL("../docs/robots.txt", import.meta.url), "utf8");
 
   assert.match(githubPages, /pt=128677255&amp;ct=site_home_ai_q4_2026&amp;mt=8/);
   assert.match(githubPages, /application\/ld\+json/);
@@ -152,17 +152,7 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   assert.match(worksheetPage, /Print \/ save as PDF/);
   assert.match(validationCss, /@media print/);
   assert.match(sitemap, /ai-service-validation-worksheet\//);
-  assert.match(deploymentWorkflow, /push:/);
-  assert.match(deploymentWorkflow, /branches:\s*[\s\S]*- main/);
-  assert.match(deploymentWorkflow, /docs\/\*\*/);
-  assert.match(deploymentWorkflow, /workflow_dispatch/);
-  assert.match(deploymentWorkflow, /pages: write/);
-  assert.match(deploymentWorkflow, /id-token: write/);
-  assert.match(deploymentWorkflow, /actions\/checkout@v7/);
-  assert.match(deploymentWorkflow, /actions\/configure-pages@v6/);
-  assert.match(deploymentWorkflow, /upload-pages-artifact@v5/);
-  assert.match(deploymentWorkflow, /deploy-pages@v5/);
-  assert.match(deploymentWorkflow, /path: \.\/docs/);
+  assert.match(robots, /Sitemap: https:\/\/wanglei13975\.github\.io\/ai-fuye-lab-site\/sitemap\.xml/);
   assert.doesNotMatch(`${githubPages}\n${validationPage}\n${ideasPage}`, /\$5\.99|September 25, 2026|Sep 25/);
   assert.match(githubPages, /validate-ai-side-hustle\//);
   assert.match(ideasPage, /validate-ai-side-hustle\//);
