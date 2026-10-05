@@ -6,7 +6,7 @@ const appStoreUrl = "https://apps.apple.com/us/app/ai-side-hustle-lab/id68034228
 export const metadata: Metadata = {
   title: "Validate an AI Service Idea in 7 Days",
   description: "A practical seven-day route for testing one AI service idea with a real customer, a small sample, and clear stop conditions.",
-  alternates: { canonical: "/validate" },
+  alternates: { canonical: "/validate-ai-side-hustle" },
 };
 
 const steps = [

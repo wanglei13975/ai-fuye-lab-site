@@ -35,14 +35,14 @@ export default function IdeasPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }} />
       <nav className="nav wrap">
         <Link className="brand" href="/" aria-label="AI Side Hustle Lab home"><span className="mark">AI</span> AI Side Hustle Lab</Link>
-        <div className="navLinks"><Link href="/">Home</Link><Link href="/validate">7-day route</Link><a href={appStoreUrl} target="_blank" rel="noreferrer">Get the app</a><Link href="/privacy">Privacy</Link><Link href="/support">Support</Link></div>
+        <div className="navLinks"><Link href="/">Home</Link><Link href="/validate-ai-side-hustle">7-day route</Link><a href={appStoreUrl} target="_blank" rel="noreferrer">Get the app</a><Link href="/privacy">Privacy</Link><Link href="/support">Support</Link></div>
       </nav>
       <section className="validationHero wrap">
         <div>
           <p className="eyebrow">Start with a test, not a promise</p>
           <h1>AI side-hustle ideas you can validate before you build.</h1>
           <p className="lead">Pick one customer, make one small sample, check the economics, and decide whether to continue. The goal is useful evidence — not an income guarantee.</p>
-          <div className="heroActions"><a className="cta" href={appStoreUrl} target="_blank" rel="noreferrer">Start free on the App Store <span>↗</span></a><Link className="textLink" href="/validate">See the seven-day route <span>→</span></Link></div>
+          <div className="heroActions"><a className="cta" href={appStoreUrl} target="_blank" rel="noreferrer">Start free on the App Store <span>↗</span></a><Link className="textLink" href="/validate-ai-side-hustle">See the seven-day route <span>→</span></Link></div>
         </div>
         <aside className="validationAside" aria-label="Validation rule"><span>THE FILTER</span><strong>One customer.<br />One sample.<br />One decision.</strong><p>If you cannot name the customer and the evidence, the idea is still only a guess.</p></aside>
       </section>

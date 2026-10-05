@@ -26,5 +26,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}<div className="mobilePurchaseBar" aria-label="Pro purchase information"><span><strong>Lifetime Pro $39.99</strong><small>one-time · Annual $29.99/year</small></span><a href={appStoreUrl} target="_blank" rel="noreferrer">Get the app <span aria-hidden="true">↗</span></a></div></body></html>;
+  return <html lang="en"><body>{children}<div className="mobilePurchaseBar" aria-label="Pro purchase information"><span><strong>Lifetime Pro $39.99</strong><small>one-time · Annual $29.99/year</small></span><a href={appStoreUrl} target="_blank" rel="noreferrer">Get the app <span aria-hidden="true">↗</span></a></div><script defer src="/campaign-link.js" /></body></html>;
 }

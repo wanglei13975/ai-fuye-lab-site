@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import vm from "node:vm";
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -76,8 +77,8 @@ test("keeps the App Store CTA and pricing explanation in the source", async () =
   assert.doesNotMatch(`${page}\n${layout}`, /\$5\.99|September 25, 2026|Sep 25/);
 });
 
-test("renders the seven-day validation route with a direct App Store CTA", async () => {
-  const response = await render("/validate");
+test("renders the canonical seven-day validation route with a direct App Store CTA", async () => {
+  const response = await render("/validate-ai-side-hustle");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Validate one AI service idea/);
@@ -86,6 +87,14 @@ test("renders the seven-day validation route with a direct App Store CTA", async
   assert.match(html, /Annual Pro is \$29\.99\/year and Lifetime Pro is a \$39\.99 one-time purchase/);
   assert.doesNotMatch(html, /\$5\.99|September 25, 2026/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|Building your site/);
+});
+
+test("keeps the earlier seven-day validation route working", async () => {
+  const response = await render("/validate");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Validate one AI service idea/);
+  assert.match(html, /validate-ai-side-hustle/);
 });
 
 test("renders the high-intent AI ideas route with a seven-day guide and CTA", async () => {
@@ -117,4 +126,69 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   assert.match(ideasPage, /application\/ld\+json/);
   assert.match(ideasPage, /twitter:card/);
   assert.doesNotMatch(`${githubPages}\n${validationPage}\n${ideasPage}`, /\$5\.99|September 25, 2026|Sep 25/);
+  assert.match(githubPages, /validate-ai-side-hustle\//);
+  assert.match(ideasPage, /validate-ai-side-hustle\//);
+});
+
+test("forwards only registered AIF campaign tokens to App Store links", async () => {
+  const script = await readFile(new URL("../public/campaign-link.js", import.meta.url), "utf8");
+  const githubPagesScript = await readFile(new URL("../docs/campaign-link.js", import.meta.url), "utf8");
+  assert.equal(githubPagesScript, script);
+
+  const storeLink = { href: "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?pt=128677255&ct=site_home_ai_q4_2026&mt=8" };
+  const nonStoreLink = { href: "https://example.com/help" };
+  const banner = { content: "app-id=6803422848, ct=site_home_ai_q4_2026, pt=128677255, mt=8" };
+  let clickHandler;
+  const storedValues = new Map();
+  const document = {
+    querySelectorAll: () => [storeLink, nonStoreLink],
+    querySelector: () => banner,
+    addEventListener: (_name, handler) => { clickHandler = handler; },
+  };
+  const window = {
+    location: { search: "?ct=apple_ads_1025_us_ai", href: "https://wanglei13975.github.io/ai-fuye-lab-site/" },
+    sessionStorage: { setItem: (key, value) => storedValues.set(key, value), getItem: (key) => storedValues.get(key) ?? null },
+  };
+  vm.runInNewContext(script, { document, window, URL, URLSearchParams });
+  const updated = new URL(storeLink.href);
+  assert.equal(updated.searchParams.get("pt"), "128677255");
+  assert.equal(updated.searchParams.get("ct"), "apple_ads_1025_us_ai");
+  assert.equal(updated.searchParams.get("mt"), "8");
+  assert.equal(nonStoreLink.href, "https://example.com/help");
+  assert.match(banner.content, /ct=apple_ads_1025_us_ai/);
+
+  const dynamicLink = { href: "https://apps.apple.com/us/app/id6803422848" };
+  clickHandler({ target: { closest: () => dynamicLink } });
+  assert.equal(new URL(dynamicLink.href).searchParams.get("ct"), "apple_ads_1025_us_ai");
+
+  const nextPageLink = { href: "https://apps.apple.com/us/app/ai-side-hustle-lab/id6803422848?ct=site_home_ai_q4_2026" };
+  const nextPageDocument = { querySelectorAll: () => [nextPageLink], querySelector: () => null, addEventListener() {} };
+  const nextPageWindow = {
+    location: { search: "", href: "https://wanglei13975.github.io/ai-fuye-lab-site/ai-side-hustle-ideas/" },
+    sessionStorage: window.sessionStorage,
+  };
+  vm.runInNewContext(script, { document: nextPageDocument, window: nextPageWindow, URL, URLSearchParams });
+  assert.equal(new URL(nextPageLink.href).searchParams.get("ct"), "apple_ads_1025_us_ai");
+});
+
+test("does not pass an unregistered AIF token into the App Store", async () => {
+  const script = await readFile(new URL("../public/campaign-link.js", import.meta.url), "utf8");
+  const storeLink = { href: "https://apps.apple.com/us/app/id6803422848?ct=site_home_ai_q4_2026" };
+  const document = { querySelectorAll: () => [storeLink], querySelector: () => null, addEventListener() {} };
+  const window = { location: { search: "?ct=not_registered", href: "https://example.com/" } };
+  vm.runInNewContext(script, { document, window, URL, URLSearchParams });
+  assert.equal(new URL(storeLink.href).searchParams.get("ct"), "site_home_ai_q4_2026");
+});
+
+test("loads campaign attribution forwarding on every public GitHub Pages route", async () => {
+  for (const pathname of [
+    "../docs/index.html",
+    "../docs/ai-side-hustle-ideas/index.html",
+    "../docs/validate-ai-side-hustle/index.html",
+    "../docs/privacy/index.html",
+    "../docs/support/index.html",
+  ]) {
+    const html = await readFile(new URL(pathname, import.meta.url), "utf8");
+    assert.match(html, /defer src="\/ai-fuye-lab-site\/campaign-link\.js"/);
+  }
 });
