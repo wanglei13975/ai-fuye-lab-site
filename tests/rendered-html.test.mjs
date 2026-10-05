@@ -152,6 +152,9 @@ test("keeps the GitHub Pages fallback in sync with the conversion offer", async 
   assert.match(worksheetPage, /Print \/ save as PDF/);
   assert.match(validationCss, /@media print/);
   assert.match(sitemap, /ai-service-validation-worksheet\//);
+  assert.match(deploymentWorkflow, /push:/);
+  assert.match(deploymentWorkflow, /branches:\s*[\s\S]*- main/);
+  assert.match(deploymentWorkflow, /docs\/\*\*/);
   assert.match(deploymentWorkflow, /workflow_dispatch/);
   assert.match(deploymentWorkflow, /pages: write/);
   assert.match(deploymentWorkflow, /id-token: write/);
